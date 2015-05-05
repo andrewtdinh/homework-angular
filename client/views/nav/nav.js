@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('groceryList')
+angular.module('homework')
 .controller('NavCtrl', function($rootScope, $scope, $state, User, $http, $window){
 
   $scope.afAuth.$onAuth(function(data){
@@ -10,7 +10,7 @@ angular.module('groceryList')
       $http.defaults.headers.common.Authorization = 'Bearer ' + data.token;
       User.findOrCreate()
       .then(function(){
-       $state.go('grocery');
+       $state.go('homeworks');
       })
       .catch(function(){
        $window.swal({title: 'Registration Error', text: 'There was a problem with your registration. Please try again.', type: 'error'});

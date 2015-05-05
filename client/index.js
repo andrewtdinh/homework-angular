@@ -1,1 +1,1 @@
-angular.module('groceryList', ['firebase', 'ui.router']);
+angular.module('homework', ['firebase', 'ui.router']);

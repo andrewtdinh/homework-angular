@@ -1,5 +1,5 @@
 'use strict';
 
-angular.module('groceryList')
-.constant('firebaseUrl', 'https://facebooknode.firebaseio.com/')
+angular.module('homework')
+.constant('firebaseUrl', 'https://myfb.firebaseio.com/')
 .constant('nodeUrl', 'http://localhost:8000');

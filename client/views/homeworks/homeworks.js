@@ -1,19 +1,19 @@
 'use strict';
 
-angular.module('groceryList')
-.controller('GroceryCtrl', function($window, $scope, Grocery){
+angular.module('homework')
+.controller('HomeworkCtrl', function($window, $scope, Homework){
 
   $scope.food = {};
   $scope.editing = false;
   $scope.class = 'notPicked';
 
-  Grocery.getFoodList()
+  Homework.getFoodList()
   .then(function(response){
    $scope.foods = response.data.foods;
   });
 
   $scope.destroy = function(food){
-   Grocery.destroy(food)
+   Homework.destroy(food)
    .then(function(){
     $window._.remove($scope.foods, function(f){
      return f._id === food._id;
@@ -22,7 +22,7 @@ angular.module('groceryList')
   };
 
   $scope.add = function(food){
-    Grocery.add(food)
+    Homework.add(food)
     .then(function(response){
       $scope.foods.push(response.data);
       $scope.food = {};
@@ -38,7 +38,7 @@ angular.module('groceryList')
   $scope.editFood = function(food){
    $scope.editing = true;
    $scope.food = food;
-   Grocery.getFoodList()
+   Homework.getFoodList()
    .then(function(foodList){
     $scope.foods = foodList.data.foods;
    });
@@ -67,31 +67,6 @@ angular.module('groceryList')
      $scope.foods = foodList.data.foods;
     });
    });
-  };
-
-  $scope.camOn = function(){
-    $scope.webcamOn = true;
-    $window.Webcam.set({
-      width: 320,
-      height: 240,
-      destWidth: 640,
-      destHeight: 480,
-      imageFormat: 'png',
-      jpegQuality: 90,
-    });
-    $window.Webcam.attach('#camera');
-    };
-
-  $scope.takeSnapshot = function(){
-    $window.Webcam.snap(function(dataUri){
-      $scope.food.photo = dataUri;
-      console.log(dataUri);
-    });
-  };
-
-  $scope.camOff = function(){
-    $scope.webcamOn = false;
-    $window.Webcam.reset();
   };
 
 });

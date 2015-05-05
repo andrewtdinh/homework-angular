@@ -1,29 +1,29 @@
 'use strict';
 
-angular.module('groceryList')
+angular.module('homework')
 .factory('Grocery', function($http, nodeUrl){
 
-  function Grocery(){
+  function Homework(){
   }
 
-  Grocery.getFoodList = function(){
+  Homework.getFoodList = function(){
    return $http.get(nodeUrl + '/foods');
   };
 
-  Grocery.add = function(food){
+  Homework.add = function(food){
    return $http.post(nodeUrl + '/foods', food);
   };
 
-  Grocery.save = function(food){
+  Homework.save = function(food){
    return $http.put(nodeUrl + '/foods/' + food._id, food);
   };
   // Grocery.toggle = function(food){
   //  return $http.put(nodeUrl + '/foods/' + food._id, food);
   // };
 
-  Grocery.destroy = function(food){
+  Homework.destroy = function(food){
    return $http.delete(nodeUrl + '/foods/' + food._id);
   };
 
-  return Grocery;
+  return Homework;
 });

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('groceryList')
+angular.module('homework')
 .factory('User', function($rootScope, $http, nodeUrl){
 
   function User(){

@@ -13,17 +13,17 @@ angular.module('homework')
   Homework.add = function(homework){
    return $http.post(nodeUrl + '/homeworks', homework);
   };
-  //
-  // Homework.save = function(food){
-  //  return $http.put(nodeUrl + '/foods/' + food._id, food);
-  // };
-  // // Grocery.toggle = function(food){
-  // //  return $http.put(nodeUrl + '/foods/' + food._id, food);
-  // // };
-  //
-  // Homework.destroy = function(food){
-  //  return $http.delete(nodeUrl + '/foods/' + food._id);
-  // };
+
+  Homework.save = function(homework){
+   return $http.put(nodeUrl + '/homeworks/' + homework._id, homework);
+  };
+  Homework.toggle = function(homework){
+   return $http.put(nodeUrl + '/homeworks/' + homework._id, homework);
+  };
+
+  Homework.destroy = function(homework){
+   return $http.delete(nodeUrl + '/homeworks/' + homework._id);
+  };
 
   return Homework;
 });

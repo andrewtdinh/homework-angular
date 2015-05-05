@@ -11,15 +11,15 @@ angular.module('homework')
   .then(function(response){
    $scope.homeworks = response.data.homeworks;
   });
-  //
-  // $scope.destroy = function(food){
-  //  Homework.destroy(food)
-  //  .then(function(){
-  //   $window._.remove($scope.foods, function(f){
-  //    return f._id === food._id;
-  //   });
-  //  });
-  // };
+
+  $scope.destroy = function(homework){
+   Homework.destroy(homework)
+   .then(function(){
+    $window._.remove($scope.homeworks, function(hw){
+     return hw._id === homework._id;
+    });
+   });
+  };
 
   $scope.add = function(homework){
     Homework.add(homework)
@@ -32,38 +32,37 @@ angular.module('homework')
     });
   };
 
-  // $scope.editFood = function(food){
-  //  $scope.editing = true;
-  //  $scope.food = food;
-  //  Homework.getFoodList()
-  //  .then(function(foodList){
-  //   $scope.foods = foodList.data.foods;
-  //  });
-  // };
-  //
-  // $scope.toggleCheckbox = function(food){
-  //  Grocery.save(food)
-  //  .then(function(){
-  //   if ($scope.class === 'notPicked'){
-  //    $scope.class = 'picked';
-  //   }else{
-  //    $scope.class = 'notPicked';
-  //   }
-  //  });
-  // };
-  //
-  // $scope.save = function(food){
-  //  Grocery.save(food)
-  //  .then(function(){
-  //   $scope.food = {};
-  //   $scope.food.photo = {};
-  //   $window.Webcam.reset();
-  //   $scope.editing = false;
-  //   Grocery.getFoodList()
-  //   .then(function(foodList){
-  //    $scope.foods = foodList.data.foods;
-  //   });
-  //  });
-  // };
+  $scope.edit = function(homework){
+   $scope.editing = true;
+   homework.dueDate = new Date(homework.dueDate);
+   $scope.homework = homework;
+   Homework.getHomeworkList()
+   .then(function(homeworkList){
+    $scope.homeworks = homeworkList.data.homeworks;
+   });
+  };
+
+  $scope.toggleCheckbox = function(homework){
+   Homework.save(homework)
+   .then(function(){
+    if ($scope.class === 'notPicked'){
+     $scope.class = 'picked';
+    }else{
+     $scope.class = 'notPicked';
+    }
+   });
+  };
+
+  $scope.save = function(homework){
+   Homework.save(homework)
+   .then(function(){
+    $scope.homework = {};
+    $scope.editing = false;
+    Homework.getHomeworkList()
+    .then(function(homeworkList){
+     $scope.homeworks = homeworkList.data.homeworks;
+    });
+   });
+  };
 
 });

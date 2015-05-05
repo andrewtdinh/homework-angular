@@ -37,5 +37,5 @@
      td {{homework.dueDate | date: 'yyyy-MM-dd'}}
      td {{homework.category}}
      td: input(type='checkbox', ng-model='homework.isPicked', ng-click='toggleCheckbox(homework)' ng-class="(food.isPicked === true) ? 'picked' : 'notPicked'")
-     td: button.btn.btn-xs.btn-warning(ng-click='editFood(homework)') Edit
+     td: button.btn.btn-xs.btn-warning(ng-click='edit(homework)') Edit
      td: button.btn.btn-xs.btn-danger(ng-click='destroy(homework)') Delete
